@@ -12,6 +12,8 @@ export default function Signup() {
         async function fn() {
             const {username, password} = values;
 
+            setFieldErrors({});
+
             const data = {username, password};
 
             try {
@@ -91,11 +93,11 @@ export default function Signup() {
     );
 }
 
-    const layout = {
-        labelCol: {span: 8},
-        wrapperCol: {span: 16},
-    };
+const layout = {
+    labelCol: {span: 8},
+    wrapperCol: {span: 16},
+};
 
-    const tailLayout = {
-        wrapperCol: {offset: 8, span: 16},
-    };
+const tailLayout = {
+    wrapperCol: {offset: 8, span: 16},
+};
