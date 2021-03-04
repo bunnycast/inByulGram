@@ -3,14 +3,12 @@ import {Card, Form, Input, Button, notification} from 'antd';
 import {SmileOutlined, FrownOutlined} from '@ant-design/icons';
 import {useHistory} from "react-router-dom";
 import Axios from 'axios';
-import useLocalStorage from "utils/useLocalStorage";
+import {useAppContext, setToken} from "store";
 
 export default function Login() {
+    const {dispatch} = useAppContext();
     const history = useHistory();
-    const [jwtToken, setJwtToken] = useLocalStorage('jwtToken', '');
     const [fieldErrors, setFieldErrors] = useState({});
-
-    console.log('loaded Token : ', jwtToken);
 
     const onFinish = values => {
         async function fn() {
@@ -21,13 +19,16 @@ export default function Login() {
             const data = {username, password};
 
             try {
-                const response = await Axios.post("http://localhost:8000/accounts/token/", data);
+                const response = await Axios.post(
+                    "http://localhost:8000/accounts/token/",
+                    data
+                );
 
                 const {
                     data: {token: jwtToken}
                 } = response;
 
-                setJwtToken(jwtToken);
+                dispatch(setToken(jwtToken));
 
                 notification.open({
                     message: '로그인 성공',
@@ -38,7 +39,7 @@ export default function Login() {
             } catch (error) {
                 if (error.response) {
                     notification.open({
-                        message: '로그 실패',
+                        message: '로그인 실패',
                         description: '아이디/암호를 확인해주세요.',
                         icon: <FrownOutlined style={{color: "#ff3333"}}/>,
                     });
