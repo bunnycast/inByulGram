@@ -5,7 +5,7 @@ import StoryList from "./StoryList";
 import SuggestionList from "./SuggestionList";
 import LogoImage from 'assets/logo.png';
 
-function AppLayout({children}) {
+function AppLayout({ children }) {
     return (
         <div className="app">
             <div className="header">

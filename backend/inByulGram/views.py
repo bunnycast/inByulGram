@@ -1,7 +1,6 @@
 from datetime import timedelta
 
 from django.db.models import Q
-from django.shortcuts import render
 from django.utils import timezone
 from rest_framework.permissions import AllowAny
 from rest_framework.viewsets import ModelViewSet

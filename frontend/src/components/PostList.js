@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { Alert } from "antd";
 import Axios from 'axios';
 import Post from "./Post";
-import {useAppContext} from "store";
+import { useAppContext } from "store";
 
 const apiUrl = "http://localhost:8000/api/posts/";
 
@@ -33,7 +33,7 @@ function PostList() {
                 <Alert type="warning" message="포스팅이 없습니다. :-(" />
             )}
             {postList.map(post => (
-                <Post post={post} ket={post.id} />
+                <Post post={post} key={post.id} />
             ))}
         </div>
     );

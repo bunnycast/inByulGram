@@ -1,8 +1,8 @@
 //https://usehooks.com/useLocalStorage/
-import {useState} from 'react';
+import { useState } from 'react';
 
 
-export function getStorageItem (key, initialValue) {
+export function getStorageItem(key, initialValue) {
     try {
         // Get from local storage by key
         const item = window.localStorage.getItem(key);
@@ -15,11 +15,10 @@ export function getStorageItem (key, initialValue) {
     }
 }
 
-export function setStorageItem (key, value) {
+export function setStorageItem(key, value) {
     try {
         window.localStorage.setItem(key, JSON.stringify(value));
-    }
-    catch(error) {
+    } catch(error) {
         console.log(error);
     }
 }
@@ -28,7 +27,7 @@ export default function useLocalStorage(key, initialValue) {
     // State to store our value
     // Pass initial state function to useState so logic is only executed once
     const [storedValue, setStoredValue] = useState(() => {
-        return getStorageItem(key, initialValue)
+        return getStorageItem(key, initialValue);
     });
 
     // Return a wrapped version of useState's setter function that ...
