@@ -16,4 +16,4 @@ class SuggestionListAPIView(ListAPIView):
     queryset = get_user_model().objects.all()
     serializer_class = SuggestionUserSerializer
     # FIXME : permission
-    permission_classes = [AllowAny, ]
+    # permission_classes = [AllowAny, ]
