@@ -23,7 +23,7 @@ function PostList() {
             })
             .catch(error => {
                 // error.response;
-            })
+            });
         console.log('mounted!')
     }, []);
 
